@@ -46,6 +46,7 @@ function extra_contact_info($info)
 	$info['twitter']   = 'Twitter';
 	$info['linkedin']  = 'LinkedIn';
 	$info['instagram'] = 'Instagram';
+	$info['github']    = 'GitHub';
 
 	return $info;
 }
@@ -54,8 +55,8 @@ add_filter('user_contactmethods', 'extra_contact_info');
 
 /**
  * @param WP_REST_Response $response
- * @param \stdClass $user
- * @param WP_REST_Request $request
+ * @param \stdClass        $user
+ * @param WP_REST_Request  $request
  *
  * @return mixed
  */
@@ -69,6 +70,7 @@ function ag_filter_user_json($response, $user, $request)
 		'twitter'    => $user->twitter,
 		'linkedin'   => $user->linkedin,
 		'instagram'  => $user->instagram,
+		'github'     => $user->github,
 	];
 
 	return $response;
