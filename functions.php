@@ -13,15 +13,6 @@ add_theme_support('post-thumbnails');
 function ag_filter_post_json($response, $post, $context)
 {
 	/**
-	 * Author
-	 */
-	$response->data['author_meta'] = [
-		'id'           => get_the_author_meta('id', $post->author),
-		'display_name' => get_the_author_meta('display_name', $post->author),
-		'facebook'     => get_the_author_meta('facebook', $post->author),
-	];
-
-	/**
 	 * Tags
 	 */
 	$tags                        = wp_get_post_tags($post->ID);
@@ -77,3 +68,5 @@ function ag_filter_user_json($response, $user, $request)
 }
 
 add_filter('rest_prepare_user', 'ag_filter_user_json', 10, 3);
+
+add_image_size('blog-100x100', 100, 100);
